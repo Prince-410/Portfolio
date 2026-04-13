@@ -35,7 +35,11 @@ cd Portfolio
 
 ## 🌐 Live Demo
 
+<<<<<<< HEAD
 Visit the live site here: [princelakhani.in](https://princelakhani.in)
+=======
+princelakhani.in
+>>>>>>> 5ce79a69658ffa8f9f09fd45ede3454d1b06344f
 
 ## 📬 Contact
 
