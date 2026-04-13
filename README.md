@@ -35,7 +35,7 @@ cd Portfolio
 
 ## 🌐 Live Demo
 
-Hosted on Vercel. *(Link to be updated based on deployed domain)*
+Visit the live site here: [princelakhani.in](https://princelakhani.in)
 
 ## 📬 Contact
 
