@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prince Lakhani | Full-Stack Developer & AI/ML Engineer</title>
+    <meta name="description"
+        content="Portfolio of Prince Lakhani — B.Tech CSE (AI-ML) student at Adani University. Full-Stack Developer, Machine Learning enthusiast, and passionate software engineer from Gujarat, India.">
+    <meta name="keywords"
+        content="Prince Lakhani, Full Stack Developer, AI ML Engineer, Portfolio, React, Python, Machine Learning">
+    <meta name="author" content="Prince Lakhani">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Prince Lakhani | Full-Stack Developer & AI/ML Engineer">
+    <meta property="og:description"
+        content="Junior B.Tech CSE (AI-ML) student building scalable software systems and applying machine learning to solve real-world problems.">
+    <meta property="og:type" content="website">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Cursor Glow Effect -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Particle Canvas -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">
+                <span class="logo-bracket">&lt;</span>
+                <span class="logo-text">PL</span>
+                <span class="logo-bracket">/&gt;</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="#about" class="nav-link" data-section="about">About</a>
+                <a href="#skills" class="nav-link" data-section="skills">Skills</a>
+                <a href="#projects" class="nav-link" data-section="projects">Projects</a>
+                <a href="#education" class="nav-link" data-section="education">Education</a>
+                <a href="#certifications" class="nav-link" data-section="certifications">Certifications</a>
+                <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+            </div>
+            <a href="#contact" class="nav-cta">Let's Talk</a>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+        <div class="mobile-menu-content">
+            <a href="#about" class="mobile-nav-link">About</a>
+            <a href="#skills" class="mobile-nav-link">Skills</a>
+            <a href="#projects" class="mobile-nav-link">Projects</a>
+            <a href="#education" class="mobile-nav-link">Education</a>
+            <a href="#certifications" class="mobile-nav-link">Certifications</a>
+            <a href="#contact" class="mobile-nav-link">Contact</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                <span>Available for Internship</span>
+            </div>
+            <h1 class="hero-title">
+                <span class="hero-greeting">Hello, I'm</span>
+                <span class="hero-name">
+                    <span class="name-letter" style="--i:0">P</span><span class="name-letter"
+                        style="--i:1">r</span><span class="name-letter" style="--i:2">i</span><span class="name-letter"
+                        style="--i:3">n</span><span class="name-letter" style="--i:4">c</span><span class="name-letter"
+                        style="--i:5">e</span>
+                    <span class="name-space"> </span>
+                    <span class="name-letter" style="--i:6">L</span><span class="name-letter"
+                        style="--i:7">a</span><span class="name-letter" style="--i:8">k</span><span class="name-letter"
+                        style="--i:9">h</span><span class="name-letter" style="--i:10">a</span><span class="name-letter"
+                        style="--i:11">n</span><span class="name-letter" style="--i:12">i</span>
+                </span>
+            </h1>
+            <div class="hero-typewriter">
+                <span class="typewriter-prefix">I build </span>
+                <span class="typewriter-text" id="typewriterText"></span>
+                <span class="typewriter-cursor">|</span>
+            </div>
+            <p class="hero-description">
+                Junior B.Tech CSE (AI-ML) student at <strong>Adani University</strong> with strong foundations
+                in full-stack development, data science, data analytics, and machine learning. Passionate about
+                building scalable software systems and applying intelligent, data-driven solutions to real-world
+                problems.
+            </p>
+            <div class="hero-actions">
+                <a href="#projects" class="btn btn-primary">
+                    <span>View My Work</span>
+                    <i data-lucide="arrow-down-right"></i>
+                </a>
+                <a href="#contact" class="btn btn-outline">
+                    <span>Get In Touch</span>
+                    <i data-lucide="send"></i>
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number" data-target="5">0</span><span class="stat-plus">+</span>
+                    <span class="stat-label">Projects</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="8">0</span><span class="stat-plus">+</span>
+                    <span class="stat-label">Technologies</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="4">0</span><span class="stat-plus">+</span>
+                    <span class="stat-label">Certifications</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="code-window">
+                <div class="code-header">
+                    <div class="code-dots">
+                        <span class="dot dot-red"></span>
+                        <span class="dot dot-yellow"></span>
+                        <span class="dot dot-green"></span>
+                    </div>
+                    <span class="code-filename">prince.js</span>
+                </div>
+                <div class="code-body">
+                    <pre><code><span class="code-keyword">const</span> <span class="code-variable">prince</span> = {
+  <span class="code-property">name</span>: <span class="code-string">"Prince Lakhani"</span>,
+  <span class="code-property">role</span>: <span class="code-string">"AI/ML, DS & Full-Stack"</span>,
+  <span class="code-property">location</span>: <span class="code-string">"Gujarat, India"</span>,
+  <span class="code-property">university</span>: <span class="code-string">"Adani University"</span>,
+  <span class="code-property">skills</span>: [
+    <span class="code-string">"React"</span>, <span class="code-string">"Node.js"</span>,
+    <span class="code-string">"Python"</span>, <span class="code-string">"TensorFlow"</span>,
+    <span class="code-string">"MongoDB"</span>, <span class="code-string">"Docker"</span>
+  ],
+  <span class="code-property">passion</span>: <span class="code-string">"Building the future"</span>,
+  <span class="code-method">code</span>: () => <span class="code-string">"🚀 Let's build!"</span>
+};</code></pre>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll-indicator">
+            <div class="scroll-line"></div>
+            <span>Scroll Down</span>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">&lt;about&gt;</span>
+                <h2 class="section-title">About <span class="text-gradient">Me</span></h2>
+                <p class="section-subtitle">Get to know the person behind the code</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>
+                            I'm a <strong>Junior B.Tech CSE (AI-ML)</strong> student at Adani University, Ahmedabad,
+                            with a deep passion for building technology that matters. My journey in tech started with
+                            curiosity about how things work and evolved into a relentless pursuit of building scalable,
+                            intelligent software solutions.
+                        </p>
+                        <p>
+                            I specialize in the intersection of <strong>Artificial Intelligence</strong> and
+                            <strong>Machine learning</strong>, creating applications that are not only visually stunning
+                            but also powered by intelligent data-driven insights. From crafting responsive frontends
+                            with React.js to building robust backends with Node.js and deploying ML models on the cloud
+                            — I love turning ideas into reality.
+                        </p>
+                        <p>
+                            When I'm not coding, you'll find me exploring new technologies, participating in hackathons,
+                            or diving into research papers on deep learning and data science.
+                        </p>
+                    </div>
+                    <div class="about-info-grid">
+                        <div class="info-card">
+                            <i data-lucide="map-pin" class="info-icon"></i>
+                            <div>
+                                <span class="info-label">Location</span>
+                                <span class="info-value">Gujarat, India</span>
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <i data-lucide="graduation-cap" class="info-icon"></i>
+                            <div>
+                                <span class="info-label">University</span>
+                                <span class="info-value">Adani University</span>
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <i data-lucide="code-2" class="info-icon"></i>
+                            <div>
+                                <span class="info-label">Specialization</span>
+                                <span class="info-value">AI & ML</span>
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <i data-lucide="mail" class="info-icon"></i>
+                            <div>
+                                <span class="info-label">Email</span>
+                                <span class="info-value">princelakhani74@gmail.com</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="tech-orbit">
+                        <div class="orbit-center">
+                            <span class="orbit-icon">👨‍💻</span>
+                        </div>
+                        <div class="orbit-ring orbit-ring-1">
+                            <div class="orbit-item" style="--angle: 0deg"><span>⚛️</span></div>
+                            <div class="orbit-item" style="--angle: 120deg"><span>🐍</span></div>
+                            <div class="orbit-item" style="--angle: 240deg"><span>🗄️</span></div>
+                        </div>
+                        <div class="orbit-ring orbit-ring-2">
+                            <div class="orbit-item" style="--angle: 60deg"><span>🤖</span></div>
+                            <div class="orbit-item" style="--angle: 180deg"><span>☁️</span></div>
+                            <div class="orbit-item" style="--angle: 300deg"><span>🐳</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section skills" id="skills">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">&lt;skills&gt;</span>
+                <h2 class="section-title">Technical <span class="text-gradient">Arsenal</span></h2>
+                <p class="section-subtitle">Technologies & tools I work with</p>
+            </div>
+            <div class="skills-categories">
+                <!-- Languages -->
+                <div class="skill-category" data-category="languages">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i data-lucide="code-2"></i>
+                        </div>
+                        <h3 class="category-title">Languages</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <div class="skill-tag"><span class="skill-dot" style="--dot-color: #3776AB"></span>Python</div>
+                        <div class="skill-tag"><span class="skill-dot" style="--dot-color: #F7DF1E"></span>JavaScript
+                        </div>
+                        <div class="skill-tag"><span class="skill-dot" style="--dot-color: #ED8B00"></span>Java</div>
+                        <div class="skill-tag"><span class="skill-dot" style="--dot-color: #00599C"></span>C/C++</div>
+                        <div class="skill-tag"><span class="skill-dot" style="--dot-color: #E34F26"></span>HTML/CSS
+                        </div>
+                        <div class="skill-tag"><span class="skill-dot" style="--dot-color: #4479A1"></span>SQL</div>
+                    </div>
+                </div>
+                <!-- AI/ML -->
+                <div class="skill-category" data-category="aiml">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i data-lucide="brain"></i>
+                        </div>
+                        <h3 class="category-title">AI / ML</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <div class="skill-tag"><span class="skill-dot" style="--dot-color: #FF6F00"></span>TensorFlow
+                        </div>
+                        <div class="skill-tag"><span class="skill-dot" style="--dot-color: #EE4C2C"></span>PyTorch</div>
+                        <div class="skill-tag"><span class="skill-dot" style="--dot-color: #F7931E"></span>Scikit-learn
+                        </div>
+                        <div class="skill-tag"><span class="skill-dot" style="--dot-color: #150458"></span>Pandas</div>
+                        <div class="skill-tag"><span class="skill-dot" style="--dot-color: #013243"></span>NumPy</div>
+                        <div class="skill-tag"><span class="skill-dot" style="--dot-color: #11557C"></span>Matplotlib
+                        </div>
+                        <div class="skill-tag"><span class="skill-dot" style="--dot-color: #444876"></span>Seaborn</div>
+                    </div>
+                </div>
+                <!-- Web & Frameworks -->
+                <div class="skill-category" data-category="web">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i data-lucide="globe"></i>
+                        </div>
+                        <h3 class="category-title">Web & Frameworks</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <div class="skill-tag"><span class="skill-dot" style="--dot-color: #61DAFB"></span>React.js
+                        </div>
+                        <div class="skill-tag"><span class="skill-dot" style="--dot-color: #339933"></span>Node.js</div>
+                        <div class="skill-tag"><span class="skill-dot" style="--dot-color: #000000"></span>Express.js
+                        </div>
+                        <div class="skill-tag"><span class="skill-dot" style="--dot-color: #009688"></span>REST APIs
+                        </div>
+                    </div>
+                </div>
+                <!-- Databases & Cloud -->
+                <div class="skill-category" data-category="cloud">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i data-lucide="database"></i>
+                        </div>
+                        <h3 class="category-title">Databases & Cloud</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <div class="skill-tag"><span class="skill-dot" style="--dot-color: #47A248"></span>MongoDB</div>
+                        <div class="skill-tag"><span class="skill-dot" style="--dot-color: #4169E1"></span>PostgreSQL
+                        </div>
+                        <div class="skill-tag"><span class="skill-dot" style="--dot-color: #4479A1"></span>MySQL</div>
+                        <div class="skill-tag"><span class="skill-dot" style="--dot-color: #FFCA28"></span>Firebase
+                        </div>
+                    </div>
+                </div>
+                <!-- Tools & Platforms -->
+                <div class="skill-category" data-category="tools">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i data-lucide="wrench"></i>
+                        </div>
+                        <h3 class="category-title">Tools & Platforms</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <div class="skill-tag"><span class="skill-dot" style="--dot-color: #F05032"></span>Git</div>
+                        <div class="skill-tag"><span class="skill-dot" style="--dot-color: #181717"></span>GitHub</div>
+                        <div class="skill-tag"><span class="skill-dot" style="--dot-color: #2496ED"></span>Docker</div>
+                        <div class="skill-tag"><span class="skill-dot" style="--dot-color: #007ACC"></span>VS Code</div>
+                        <div class="skill-tag"><span class="skill-dot" style="--dot-color: #F37626"></span>Jupyter</div>
+                        <div class="skill-tag"><span class="skill-dot" style="--dot-color: #FF6C37"></span>Postman</div>
+                    </div>
+                </div>
+                <!-- Core CS -->
+                <div class="skill-category" data-category="core">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i data-lucide="cpu"></i>
+                        </div>
+                        <h3 class="category-title">Core CS</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <div class="skill-tag"><span class="skill-dot" style="--dot-color: #FF4444"></span>Data
+                            Structures</div>
+                        <div class="skill-tag"><span class="skill-dot" style="--dot-color: #FF6B6B"></span>Algorithms
+                        </div>
+                        <div class="skill-tag"><span class="skill-dot" style="--dot-color: #4ECDC4"></span>OOP</div>
+                        <div class="skill-tag"><span class="skill-dot" style="--dot-color: #45B7D1"></span>System Design
+                        </div>
+                        <div class="skill-tag"><span class="skill-dot" style="--dot-color: #96CEB4"></span>Agile/Scrum
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section projects" id="projects">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">&lt;projects&gt;</span>
+                <h2 class="section-title">Featured <span class="text-gradient">Projects</span></h2>
+                <p class="section-subtitle">Things I've built that I'm proud of</p>
+            </div>
+            <div class="projects-grid">
+                <!-- Project 1: FoodieDash -->
+                <div class="project-card project-featured" data-tilt>
+                    <div class="project-image">
+                        <div class="project-image-placeholder"
+                            style="--gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%)">
+                            <i data-lucide="utensils" class="project-placeholder-icon"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/Prince-410/Online-Food-Ordering-System" target="_blank"
+                                    rel="noopener noreferrer" class="project-link-btn" aria-label="GitHub Repository">
+                                    <i data-lucide="github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-year">2025</div>
+                        <h3 class="project-title">FoodieDash — Online Food Ordering System</h3>
+                        <p class="project-description">
+                            A full-stack food delivery platform with glassmorphism UI, real-time order tracking,
+                            JWT authentication, admin dashboard, cart management, and role-based access control.
+                            Built with a premium dark theme and responsive design.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-badge">React.js</span>
+                            <span class="tech-badge">Node.js</span>
+                            <span class="tech-badge">MongoDB</span>
+                            <span class="tech-badge">Express.js</span>
+                            <span class="tech-badge">TypeScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Laptop Price Predictor -->
+                <div class="project-card" data-tilt>
+                    <div class="project-image">
+                        <div class="project-image-placeholder"
+                            style="--gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%)">
+                            <i data-lucide="laptop" class="project-placeholder-icon"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/Prince-410/laptop-price-predictor" target="_blank"
+                                    rel="noopener noreferrer" class="project-link-btn" aria-label="GitHub Repository">
+                                    <i data-lucide="github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-year">2025</div>
+                        <h3 class="project-title">Laptop Price Predictor</h3>
+                        <p class="project-description">
+                            An ML-powered application that predicts laptop prices based on specifications.
+                            Features a modern glassmorphism UI, FastAPI backend, and trained ML model
+                            deployed for real-time inference.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Scikit-learn</span>
+                            <span class="tech-badge">FastAPI</span>
+                            <span class="tech-badge">HTML/CSS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: ML Disease Prediction -->
+                <div class="project-card" data-tilt>
+                    <div class="project-image">
+                        <div class="project-image-placeholder"
+                            style="--gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)">
+                            <i data-lucide="heart-pulse" class="project-placeholder-icon"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/Prince-410" target="_blank" rel="noopener noreferrer"
+                                    class="project-link-btn" aria-label="GitHub Repository">
+                                    <i data-lucide="github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-year">2025</div>
+                        <h3 class="project-title">ML-Based Disease Prediction System</h3>
+                        <p class="project-description">
+                            End-to-end ML pipeline with data preprocessing, feature engineering, and model
+                            training achieving 94% accuracy. Compared 5 classification algorithms and deployed
+                            a prediction API via Flask on GCP handling 200+ daily inference requests.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Scikit-learn</span>
+                            <span class="tech-badge">Flask</span>
+                            <span class="tech-badge">GCP</span>
+                            <span class="tech-badge">Pandas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Real-Time Chat -->
+                <div class="project-card" data-tilt>
+                    <div class="project-image">
+                        <div class="project-image-placeholder"
+                            style="--gradient: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)">
+                            <i data-lucide="message-circle" class="project-placeholder-icon"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/Prince-410" target="_blank" rel="noopener noreferrer"
+                                    class="project-link-btn" aria-label="GitHub Repository">
+                                    <i data-lucide="github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-year">2025</div>
+                        <h3 class="project-title">Real-Time Chat Application</h3>
+                        <p class="project-description">
+                            A real-time messaging platform supporting 100+ concurrent users with WebSocket
+                            connections. Features message encryption, typing indicators, read receipts,
+                            and media sharing capabilities.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-badge">React.js</span>
+                            <span class="tech-badge">Socket.io</span>
+                            <span class="tech-badge">Node.js</span>
+                            <span class="tech-badge">Firebase</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5: Restaurant Website -->
+                <div class="project-card" data-tilt>
+                    <div class="project-image">
+                        <div class="project-image-placeholder"
+                            style="--gradient: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)">
+                            <i data-lucide="chef-hat" class="project-placeholder-icon"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/Prince-410/Restaurant" target="_blank"
+                                    rel="noopener noreferrer" class="project-link-btn" aria-label="GitHub Repository">
+                                    <i data-lucide="github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-year">2025</div>
+                        <h3 class="project-title">Restaurant Website</h3>
+                        <p class="project-description">
+                            A modern, responsive restaurant website featuring an elegant UI, menu showcase,
+                            reservation system, and seamless user experience with smooth animations and
+                            interactive elements.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-badge">JavaScript</span>
+                            <span class="tech-badge">HTML5</span>
+                            <span class="tech-badge">CSS3</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6: Algorithm Visualizer -->
+                <div class="project-card" data-tilt>
+                    <div class="project-image">
+                        <div class="project-image-placeholder"
+                            style="--gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)">
+                            <i data-lucide="bar-chart-3" class="project-placeholder-icon"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/Prince-410" target="_blank" rel="noopener noreferrer"
+                                    class="project-link-btn" aria-label="GitHub Repository">
+                                    <i data-lucide="github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-year">2025</div>
+                        <h3 class="project-title">Algorithm Visualizer</h3>
+                        <p class="project-description">
+                            Interactive visualization tool for 10+ sorting and pathfinding algorithms
+                            (Dijkstra, A*, BFS, DFS, Merge Sort). Optimized rendering pipeline achieving
+                            60 FPS animations for datasets up to 1,000 elements.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-badge">JavaScript</span>
+                            <span class="tech-badge">HTML5</span>
+                            <span class="tech-badge">CSS3</span>
+                            <span class="tech-badge">Canvas API</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="section education" id="education">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">&lt;education&gt;</span>
+                <h2 class="section-title">My <span class="text-gradient">Education</span></h2>
+                <p class="section-subtitle">Academic journey & qualifications</p>
+            </div>
+            <div class="education-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <div class="marker-dot"></div>
+                        <div class="marker-line"></div>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-badge">2023 — 2027</div>
+                        <h3 class="timeline-title">B.Tech in Computer Science & Engineering (AI-ML)</h3>
+                        <h4 class="timeline-institution">
+                            <i data-lucide="building-2"></i>
+                            Adani University — Ahmedabad, Gujarat
+                        </h4>
+                        <div class="timeline-details">
+                            <p><strong>Relevant Coursework:</strong></p>
+                            <div class="coursework-tags">
+                                <span>Data Structures</span>
+                                <span>Algorithms</span>
+                                <span>Machine Learning</span>
+                                <span>Deep Learning</span>
+                                <span>Data Science</span>
+                                <span>Data Analytics</span>
+                                <span>DBMS</span>
+                                <span>Operating Systems</span>
+                                <span>Computer Networks</span>
+                                <span>Probability & Statistics</span>
+                                <span>Linear Algebra</span>
+                                <span>Discrete Mathematics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <div class="marker-dot"></div>
+                        <div class="marker-line"></div>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-badge">Graduated 2023</div>
+                        <h3 class="timeline-title">Higher Secondary Certificate — Science (PCM + CS)</h3>
+                        <h4 class="timeline-institution">
+                            <i data-lucide="building-2"></i>
+                            Gujarat Secondary & Higher Secondary Education Board
+                        </h4>
+                        <div class="timeline-details">
+                            <div class="score-highlights-row">
+                                <div class="score-highlight">
+                                    <span class="score-label">Percentage</span>
+                                    <span class="score-value">80%</span>
+                                </div>
+                                <div class="score-highlight">
+                                    <span class="score-label">Percentile</span>
+                                    <span class="score-value">96.87</span>
+                                </div>
+                            </div>
+                            <p>Scored 520/650 with <strong>92 in Mathematics</strong> and <strong>A1 in Computer
+                                    Practical</strong>. Percentile ranks: Science Theory <strong>94.90</strong>, Overall
+                                <strong>96.87</strong>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <div class="marker-dot"></div>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-badge">Graduated 2021</div>
+                        <h3 class="timeline-title">Secondary School Certificate (SSC)</h3>
+                        <h4 class="timeline-institution">
+                            <i data-lucide="building-2"></i>
+                            Gujarat Secondary & Higher Secondary Education Board
+                        </h4>
+                        <div class="timeline-details">
+                            <div class="score-highlights-row">
+                                <div class="score-highlight">
+                                    <span class="score-label">Percentage</span>
+                                    <span class="score-value">91%</span>
+                                </div>
+                                <div class="score-highlight">
+                                    <span class="score-label">Percentile</span>
+                                    <span class="score-value">98.21</span>
+                                </div>
+                                <div class="score-highlight">
+                                    <span class="score-label">Grade</span>
+                                    <span class="score-value">A1</span>
+                                </div>
+                            </div>
+                            <p>Scored 546/600 with <strong>98 in Sanskrit</strong>, <strong>96 in Gujarati</strong>, and
+                                <strong>94 in Mathematics</strong>. Computer Education: <strong>A1</strong> in both
+                                Theory & Practical.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="section certifications" id="certifications">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">&lt;certifications&gt;</span>
+                <h2 class="section-title">Achievements & <span class="text-gradient">Certifications</span></h2>
+                <p class="section-subtitle">Milestones along the way</p>
+            </div>
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <div class="cert-icon-wrapper" style="--cert-color: #10B981">
+                        <i data-lucide="code" class="cert-icon"></i>
+                    </div>
+                    <h3 class="cert-title">Data Science</h3>
+                    <p class="cert-description">Completed comprehensive Data Science certification course from
+                        CodeWithHarry</p>
+                    <div class="cert-badge-tag">Data Science</div>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon-wrapper" style="--cert-color: #FF4444">
+                        <i data-lucide="trophy" class="cert-icon"></i>
+                    </div>
+                    <h3 class="cert-title">Hackathon Finalist</h3>
+                    <p class="cert-description">Top 10 finalist in university-level hackathon out of 50+ participating
+                        teams</p>
+                    <div class="cert-badge-tag">Competition</div>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon-wrapper" style="--cert-color: #FFB300">
+                        <i data-lucide="award" class="cert-icon"></i>
+                    </div>
+                    <h3 class="cert-title">Academic Excellence</h3>
+                    <p class="cert-description">Scored 91% (Percentile 98.21) in SSC and 80% (Percentile 96.87) in HSC —
+                        Science Stream</p>
+                    <div class="cert-badge-tag">Academic</div>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon-wrapper" style="--cert-color: #0056D2">
+                        <i data-lucide="book-open" class="cert-icon"></i>
+                    </div>
+                    <h3 class="cert-title">Coursera / NPTEL</h3>
+                    <p class="cert-description">Completed Machine Learning (Andrew Ng) and Deep Learning Specialization
+                        courses</p>
+                    <div class="cert-badge-tag">Online Learning</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">&lt;contact&gt;</span>
+                <h2 class="section-title">Let's <span class="text-gradient">Connect</span></h2>
+                <p class="section-subtitle">Have a project in mind? Let's build something amazing together.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info-side">
+                    <div class="contact-cta">
+                        <h3>Ready to collaborate?</h3>
+                        <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of
+                            your vision.</p>
+                    </div>
+                    <div class="contact-methods">
+                        <a href="mailto:princelakhani74@gmail.com" class="contact-method-card">
+                            <div class="method-icon">
+                                <i data-lucide="mail"></i>
+                            </div>
+                            <div class="method-info">
+                                <span class="method-label">Email</span>
+                                <span class="method-value">princelakhani74@gmail.com</span>
+                            </div>
+                            <i data-lucide="arrow-up-right" class="method-arrow"></i>
+                        </a>
+                        <a href="tel:+918799347883" class="contact-method-card">
+                            <div class="method-icon">
+                                <i data-lucide="phone"></i>
+                            </div>
+                            <div class="method-info">
+                                <span class="method-label">Phone</span>
+                                <span class="method-value">+91-8799347883</span>
+                            </div>
+                            <i data-lucide="arrow-up-right" class="method-arrow"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/prince-lakhani-5233403a7/?skipRedirect=true"
+                            target="_blank" rel="noopener noreferrer" class="contact-method-card">
+                            <div class="method-icon">
+                                <i data-lucide="linkedin"></i>
+                            </div>
+                            <div class="method-info">
+                                <span class="method-label">LinkedIn</span>
+                                <span class="method-value">PrinceLakhani</span>
+                            </div>
+                            <i data-lucide="arrow-up-right" class="method-arrow"></i>
+                        </a>
+                        <a href="https://github.com/Prince-410" target="_blank" rel="noopener noreferrer"
+                            class="contact-method-card">
+                            <div class="method-icon">
+                                <i data-lucide="github"></i>
+                            </div>
+                            <div class="method-info">
+                                <span class="method-label">GitHub</span>
+                                <span class="method-value">Prince-410</span>
+                            </div>
+                            <i data-lucide="arrow-up-right" class="method-arrow"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-form-side">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Your Name</label>
+                            <input type="text" id="name" name="name" class="form-input" placeholder="[NAME]" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="form-label">Your Email</label>
+                            <input type="email" id="email" name="email" class="form-input" placeholder="[EMAIL_ADDRESS]"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Subject</label>
+                            <input type="text" id="subject" name="subject" class="form-input"
+                                placeholder="Project Collaboration">
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea id="message" name="message" class="form-input form-textarea"
+                                placeholder="Tell me about your project..." rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+                            <span>Send Message</span>
+                            <i data-lucide="send"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="footer-logo">
+                        <span class="logo-bracket">&lt;</span>
+                        <span class="logo-text">PL</span>
+                        <span class="logo-bracket">/&gt;</span>
+                    </span>
+                    <p class="footer-tagline">Building the future, one line of code at a time.</p>
+                </div>
+                <div class="footer-socials">
+                    <a href="https://github.com/Prince-410" target="_blank" rel="noopener noreferrer"
+                        class="social-link" aria-label="GitHub" title="GitHub">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-github">
+                            <path
+                                d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+                            <path d="M9 18c-4.51 2-5-2-7-2" />
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/prince-lakhani-5233403a7/?skipRedirect=true" target="_blank"
+                        rel="noopener noreferrer" class="social-link" aria-label="LinkedIn" title="LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-linkedin">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                            <rect width="4" height="12" x="2" y="9" />
+                            <circle cx="4" cy="4" r="2" />
+                        </svg>
+                    </a>
+                    <a href="mailto:princelakhani74@gmail.com" class="social-link" aria-label="Email" title="Email">
+                        <i data-lucide="mail"></i>
+                    </a>
+                    <a href="tel:+918799347883" class="social-link" aria-label="Phone" title="Phone">
+                        <i data-lucide="phone"></i>
+                    </a>
+                    <a href="admin.html" class="social-link admin-access" aria-label="Admin Dashboard"
+                        title="Admin Dashboard">
+                        <i data-lucide="shield-check"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Prince Lakhani. Crafted with ❤️ and lots of ☕</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
