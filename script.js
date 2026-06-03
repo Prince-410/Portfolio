@@ -379,4 +379,403 @@ document.addEventListener('DOMContentLoaded', () => {
             card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
         });
     });
+
+    // ------ Academic Results Dashboard & Secure Viewer ------
+    const academicData = {
+        currentCGPA: 8.38,
+        semesters: [
+            {
+                id: 1,
+                title: "Semester 1",
+                sgpa: 7.76,
+                marksheetSrc: "assets/results/sem1.jpg",
+                subjects: [
+                    { code: "22EB6108", name: "Professional Communication", grade: "B+" },
+                    { code: "22EB4107", name: "Computer Programing", grade: "A+" },
+                    { code: "22EB4105", name: "Basic Electrical Engineering", grade: "A" },
+                    { code: "22EB4204", name: "Basic Electronics", grade: "A" },
+                    { code: "22EB2103", name: "Mathematics - 1", grade: "B+" },
+                    { code: "22EB2102", name: "Environmental Science", grade: "B+" }
+                ]
+            },
+            {
+                id: 2,
+                title: "Semester 2",
+                sgpa: 7.82,
+                marksheetSrc: "assets/results/sem2.jpg",
+                subjects: [
+                    { code: "22EB2201", name: "Mathematics - 2", grade: "B+" },
+                    { code: "23EB6204", name: "Human Values", grade: "A" },
+                    { code: "22EB3202", name: "Applied Physics", grade: "A" },
+                    { code: "22EB7206", name: "Data Structures", grade: "A" },
+                    { code: "23EB4203", name: "Front-end Web Development", grade: "A+" },
+                    { code: "23EB4204", name: "Python Programming", grade: "B+" }
+                ]
+            },
+            {
+                id: 3,
+                title: "Semester 3",
+                sgpa: 8.81,
+                marksheetSrc: "assets/results/sem3.jpg",
+                subjects: [
+                    { code: "ECSCI24201", name: "Analysis and Design of Algorithms", grade: "A+" },
+                    { code: "ECSCI24202", name: "Database Management Systems", grade: "A+" },
+                    { code: "EICCI24201", name: "Digital Fundamentals", grade: "A+" },
+                    { code: "ELEAI24201", name: "Effective Technical Communication", grade: "A" },
+                    { code: "ECSAJ24201", name: "Mind Mapping", grade: "A" },
+                    { code: "EMABT24204", name: "Probability and Statistics", grade: "A+" }
+                ]
+            },
+            {
+                id: 4,
+                title: "Semester 4",
+                sgpa: 8.65,
+                marksheetSrc: "assets/results/sem4.jpg",
+                subjects: [
+                    { code: "EICCI24203", name: "Data Communication & Computer Networks", grade: "A" },
+                    { code: "EMSAT24201", name: "Engineering Economics", grade: "A" },
+                    { code: "EMABT24202", name: "Discrete Mathematics & Graph Theory", grade: "A" },
+                    { code: "ECSCI24204", name: "Operating System", grade: "A+" },
+                    { code: "ECSCI24203", name: "Object Oriented Programming with Java", grade: "O" },
+                    { code: "ECSAJ24204", name: "Ideation & Conceptualization", grade: "A" }
+                ]
+            },
+            {
+                id: 5,
+                title: "Semester 5",
+                sgpa: 8.90,
+                marksheetSrc: "assets/results/sem5.jpg",
+                subjects: [
+                    { code: "EICET24304", name: "IOT and Automation", grade: "A+" },
+                    { code: "ECSAJ24301", name: "Business Models Canvas", grade: "B+" },
+                    { code: "ECSDI24302", name: "Data Security", grade: "A+" },
+                    { code: "ECSCT24301", name: "Foundation of AI", grade: "A+" },
+                    { code: "ECSCI24302", name: "Machine Learning Essentials", grade: "A+" },
+                    { code: "ECSCI24303", name: "Theory of Computation", grade: "A+" }
+                ]
+            }
+        ]
+    };
+
+    // Initialize Dashboard
+    const semDetailsCard = document.getElementById('semDetailsCard');
+    const cgpaDisplay = document.getElementById('cgpaDisplay');
+    const cgpaCircle = document.querySelector('.progress-ring__circle');
+    const semTabs = document.querySelectorAll('.sem-tab:not(.sem-upcoming)');
+    
+    // Set CGPA
+    if (cgpaDisplay) cgpaDisplay.textContent = academicData.currentCGPA;
+    
+    // Animate CGPA Circle on scroll
+    if (cgpaCircle) {
+        const radius = cgpaCircle.r.baseVal.value;
+        const circumference = radius * 2 * Math.PI;
+        cgpaCircle.style.strokeDasharray = `${circumference} ${circumference}`;
+        cgpaCircle.style.strokeDashoffset = circumference;
+        
+        const setProgress = (percent) => {
+            const offset = circumference - percent / 10 * circumference;
+            cgpaCircle.style.strokeDashoffset = offset;
+        };
+
+        const resultsSection = document.getElementById('results');
+        if (resultsSection) {
+            const observer = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    setTimeout(() => {
+                        setProgress(academicData.currentCGPA);
+                    }, 500);
+                    observer.disconnect();
+                }
+            }, { threshold: 0.3 });
+            observer.observe(resultsSection);
+        }
+    }
+
+    // Render Semester Details
+    function renderSemester(semId) {
+        if (!semDetailsCard) return;
+        const data = academicData.semesters.find(s => s.id === parseInt(semId));
+        if (!data) return;
+
+        let subjectsHtml = data.subjects.map(sub => {
+            let safeGrade = sub.grade.replace('+', '-plus');
+            return `
+            <div class="subject-item">
+                <div class="subject-header">
+                    <span class="subject-code">${sub.code}</span>
+                    <span class="grade-badge grade-${safeGrade}">${sub.grade}</span>
+                </div>
+                <div class="subject-name">${sub.name}</div>
+            </div>
+            `;
+        }).join('');
+
+        semDetailsCard.style.opacity = 0;
+        
+        setTimeout(() => {
+            semDetailsCard.innerHTML = `
+                <div class="sem-details-header">
+                    <div>
+                        <h3 class="sem-title">${data.title}</h3>
+                        <p class="text-tertiary">Adani University — B.Tech CSE (AI-ML)</p>
+                    </div>
+                    <div class="sem-sgpa">SGPA: ${data.sgpa}</div>
+                </div>
+                <div class="subject-grid">
+                    ${subjectsHtml}
+                </div>
+                <div class="view-marksheet-container">
+                    <button class="view-marksheet-btn" onclick="openSecureViewer(${data.id})">
+                        <i data-lucide="file-check-2"></i>
+                        <span>View Official Marksheet (Secure)</span>
+                    </button>
+                </div>
+            `;
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+            semDetailsCard.style.opacity = 1;
+        }, 300);
+    }
+
+    // Tab Listeners
+    if (semTabs.length > 0) {
+        semTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                semTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                renderSemester(tab.getAttribute('data-sem'));
+            });
+        });
+        // Render initial
+        renderSemester(1);
+    }
+
+    // ------ Secure Marksheet Viewer Logic (HTML Renderer — No Image Needed) ------
+    const secureModal = document.getElementById('secureViewerModal');
+    const secureRender = document.getElementById('secureMarksheetRender');
+    const closeSecureBtn = document.getElementById('closeSecureViewer');
+    const secureBackdrop = document.getElementById('secureViewerBackdrop');
+    const secureOverlay = document.getElementById('secureDocumentOverlay');
+    let secureViewerActive = false;
+
+    // Grade point lookup
+    const gradePointMap = { 'O': 10, 'A+': 9, 'A': 8, 'B+': 7, 'B': 6, 'C': 5 };
+
+    // Semester credit totals from real marksheets
+    const semMeta = {
+        1: { credits: 21, cgpa: '7.76' },
+        2: { credits: 22, cgpa: '7.79' },
+        3: { credits: 21, cgpa: '8.13' },
+        4: { credits: 20, cgpa: '8.25' },
+        5: { credits: 20, cgpa: '8.38' }
+    };
+
+    function buildMarksheetHTML(semId) {
+        const data = academicData.semesters.find(s => s.id === parseInt(semId));
+        if (!data) return '<p>Data not found.</p>';
+        const meta = semMeta[semId] || {};
+
+        const subjectCredits = { 1: [3,4,4,4,4,2], 2: [4,2,4,4,4,4], 3: [4,5,4,3,1,4], 4: [4,2,4,5,4,1], 5: [4,1,4,3,4,4] };
+        const credits = subjectCredits[semId] || data.subjects.map(() => 4);
+
+        const rows = data.subjects.map((sub, i) => {
+            const gp = gradePointMap[sub.grade] || '—';
+            return `
+            <tr>
+                <td>SEMESTER - ${['I','II','III','IV','V'][semId-1]}</td>
+                <td>${sub.code} — ${sub.name}</td>
+                <td style="text-align:center;">${gp}</td>
+                <td class="ms-grade-cell" style="text-align:center;">${sub.grade}</td>
+                <td style="text-align:center;">${credits[i]}</td>
+                <td class="ms-pass" style="text-align:center;">Pass</td>
+            </tr>`;
+        }).join('');
+
+        return `
+        <div class="ms-header">
+            <div class="ms-university">Adani University</div>
+            <div class="ms-subtitle">B. Tech. in Computer Science and Engineering (AI-ML) — Official Grade Report</div>
+            <div class="ms-student-info">
+                <div class="ms-info-row"><span>Student Name:</span> Prince Lakhani</div>
+                <div class="ms-info-row"><span>Reg. No.:</span> 1AUA23BCS145</div>
+                <div class="ms-info-row"><span>Semester:</span> SEMESTER - ${['I','II','III','IV','V'][semId-1]}</div>
+                <div class="ms-info-row"><span>Gender:</span> Male</div>
+            </div>
+        </div>
+        <table class="ms-table">
+            <thead>
+                <tr>
+                    <th>Semester</th>
+                    <th>Course Name</th>
+                    <th style="text-align:center;">Grade Point</th>
+                    <th style="text-align:center;">Grade</th>
+                    <th style="text-align:center;">Credit</th>
+                    <th style="text-align:center;">Result Status</th>
+                </tr>
+            </thead>
+            <tbody>${rows}</tbody>
+        </table>
+        <div class="ms-footer">
+            <div class="ms-footer-stat">
+                <span class="fs-label">Credit Registered</span>
+                <span class="fs-value">${meta.credits || '—'}</span>
+            </div>
+            <div class="ms-footer-stat">
+                <span class="fs-label">Credit Completed</span>
+                <span class="fs-value">${meta.credits || '—'}</span>
+            </div>
+            <div class="ms-footer-stat">
+                <span class="fs-label">GPA</span>
+                <span class="fs-value">${data.sgpa}</span>
+            </div>
+            <div class="ms-footer-stat">
+                <span class="fs-label">CGPA</span>
+                <span class="fs-value">${meta.cgpa || '—'}</span>
+            </div>
+        </div>
+        <div class="ms-readonly-bar">
+            🔒 READ-ONLY VIEW &nbsp;—&nbsp; Printing, downloading and copying are strictly disabled
+        </div>`;
+    }
+
+    window.openSecureViewer = function(semId) {
+        if (!secureModal || !secureRender) return;
+        secureRender.innerHTML = buildMarksheetHTML(semId);
+        secureModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        secureViewerActive = true;
+    };
+
+    function closeSecureViewer() {
+        if (!secureModal) return;
+        secureModal.classList.remove('active');
+        document.body.style.overflow = '';
+        secureViewerActive = false;
+        setTimeout(() => { secureRender.innerHTML = ''; }, 300);
+    }
+
+    if (closeSecureBtn) closeSecureBtn.addEventListener('click', closeSecureViewer);
+    if (secureBackdrop) secureBackdrop.addEventListener('click', closeSecureViewer);
+
+    // Block context menu & drag on the overlay shield
+    if (secureOverlay) {
+        secureOverlay.addEventListener('contextmenu', e => e.preventDefault());
+        secureOverlay.addEventListener('dragstart', e => e.preventDefault());
+    }
+
+    // Block print dialog globally when modal is active
+    window.addEventListener('beforeprint', e => {
+        if (secureViewerActive) e.preventDefault();
+    });
+
+    // Keyboard Shortcut Interception
+    document.addEventListener('keydown', function(e) {
+        if (!secureViewerActive) return;
+        if (e.key === 'Escape') { closeSecureViewer(); return; }
+        if (
+            (e.ctrlKey && ['s','p','u'].includes(e.key.toLowerCase())) ||
+            (e.metaKey && ['s','p','u'].includes(e.key.toLowerCase())) ||
+            e.key === 'F12' ||
+            (e.ctrlKey && e.shiftKey && ['i','j','c'].includes(e.key.toLowerCase())) ||
+            (e.metaKey && e.altKey && e.key.toLowerCase() === 'i')
+        ) {
+            e.preventDefault();
+        }
+    });
+
+    // ------ Performance Analytics Chart (Chart.js) ------
+    const chartCanvas = document.getElementById('performanceChart');
+    if (chartCanvas && typeof Chart !== 'undefined') {
+        const sgpaValues = academicData.semesters.map(s => s.sgpa);
+        const cgpaValues = [7.76, 7.79, 8.13, 8.25, 8.38]; // Cumulative CGPA per sem
+        const labels = academicData.semesters.map(s => s.title);
+
+        Chart.defaults.color = 'rgba(255,255,255,0.5)';
+        Chart.defaults.font.family = "'Inter', 'Outfit', sans-serif";
+
+        new Chart(chartCanvas, {
+            type: 'bar',
+            data: {
+                labels,
+                datasets: [
+                    {
+                        label: 'SGPA',
+                        data: sgpaValues,
+                        backgroundColor: [
+                            'rgba(129,140,248,0.75)',
+                            'rgba(129,140,248,0.75)',
+                            'rgba(129,140,248,0.75)',
+                            'rgba(129,140,248,0.75)',
+                            'rgba(167,139,250,0.75)'
+                        ],
+                        borderColor: [
+                            'rgba(129,140,248,1)',
+                            'rgba(129,140,248,1)',
+                            'rgba(129,140,248,1)',
+                            'rgba(129,140,248,1)',
+                            'rgba(167,139,250,1)'
+                        ],
+                        borderWidth: 2,
+                        borderRadius: 8,
+                        borderSkipped: false,
+                        barPercentage: 0.55,
+                        order: 2
+                    },
+                    {
+                        label: 'CGPA Trend',
+                        data: cgpaValues,
+                        type: 'line',
+                        borderColor: '#10b981',
+                        backgroundColor: 'rgba(16,185,129,0.08)',
+                        borderWidth: 2.5,
+                        pointBackgroundColor: '#10b981',
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2,
+                        pointRadius: 6,
+                        pointHoverRadius: 8,
+                        tension: 0.4,
+                        fill: true,
+                        order: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: { mode: 'index', intersect: false },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: 'rgba(15,15,25,0.95)',
+                        borderColor: 'rgba(255,255,255,0.1)',
+                        borderWidth: 1,
+                        padding: 14,
+                        titleFont: { size: 13, weight: '600' },
+                        bodyFont: { size: 12 },
+                        callbacks: {
+                            label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y.toFixed(2)}`
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: { color: 'rgba(255,255,255,0.04)', drawBorder: false },
+                        ticks: { color: 'rgba(255,255,255,0.55)', font: { size: 12 } }
+                    },
+                    y: {
+                        min: 6.5,
+                        max: 10,
+                        grid: { color: 'rgba(255,255,255,0.06)', drawBorder: false },
+                        ticks: {
+                            color: 'rgba(255,255,255,0.55)',
+                            font: { size: 11 },
+                            stepSize: 0.5
+                        }
+                    }
+                }
+            }
+        });
+    }
+
 });
+
