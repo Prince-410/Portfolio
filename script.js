@@ -382,7 +382,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ------ Academic Results Dashboard & Secure Viewer ------
     const academicData = {
-        currentCGPA: 8.38,
+        currentCGPA: 8.44,
         semesters: [
             {
                 id: 1,
@@ -452,6 +452,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     { code: "ECSCT24301", name: "Foundation of AI", grade: "A+" },
                     { code: "ECSCI24302", name: "Machine Learning Essentials", grade: "A+" },
                     { code: "ECSCI24303", name: "Theory of Computation", grade: "A+" }
+                ]
+            },
+            {
+                id: 6,
+                title: "Semester 6",
+                sgpa: 8.80,
+                marksheetSrc: "assets/results/sem6.jpg",
+                subjects: [
+                    { code: "ECSAJ24303", name: "Prototype Modeling", grade: "A+" },
+                    { code: "ECSEI24302", name: "Data Visualization", grade: "A+" },
+                    { code: "ECSCI24304", name: "Agile Software Development and DevOps", grade: "A" },
+                    { code: "ECSCI24305", name: "Deep Learning: Principles and Practices", grade: "A+" },
+                    { code: "ECSDI24305", name: "Network Security", grade: "A+" },
+                    { code: "ECSDI24306", name: "Web Application Development", grade: "A+" }
                 ]
             }
         ]
@@ -567,7 +581,8 @@ document.addEventListener('DOMContentLoaded', () => {
         2: { credits: 22, cgpa: '7.79' },
         3: { credits: 21, cgpa: '8.13' },
         4: { credits: 20, cgpa: '8.25' },
-        5: { credits: 20, cgpa: '8.38' }
+        5: { credits: 20, cgpa: '8.38' },
+        6: { credits: 20, cgpa: '8.44' }
     };
 
     function buildMarksheetHTML(semId) {
@@ -575,14 +590,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!data) return '<p>Data not found.</p>';
         const meta = semMeta[semId] || {};
 
-        const subjectCredits = { 1: [3,4,4,4,4,2], 2: [4,2,4,4,4,4], 3: [4,5,4,3,1,4], 4: [4,2,4,5,4,1], 5: [4,1,4,3,4,4] };
+        const subjectCredits = { 1: [3,4,4,4,4,2], 2: [4,2,4,4,4,4], 3: [4,5,4,3,1,4], 4: [4,2,4,5,4,1], 5: [4,1,4,3,4,4], 6: [1,3,4,4,4,4] };
         const credits = subjectCredits[semId] || data.subjects.map(() => 4);
 
         const rows = data.subjects.map((sub, i) => {
             const gp = gradePointMap[sub.grade] || '—';
             return `
             <tr>
-                <td>SEMESTER - ${['I','II','III','IV','V'][semId-1]}</td>
+                <td>SEMESTER - ${['I','II','III','IV','V','VI'][semId-1]}</td>
                 <td>${sub.code} — ${sub.name}</td>
                 <td style="text-align:center;">${gp}</td>
                 <td class="ms-grade-cell" style="text-align:center;">${sub.grade}</td>
@@ -598,7 +613,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="ms-student-info">
                 <div class="ms-info-row"><span>Student Name:</span> Prince Lakhani</div>
                 <div class="ms-info-row"><span>Reg. No.:</span> 1AUA23BCS145</div>
-                <div class="ms-info-row"><span>Semester:</span> SEMESTER - ${['I','II','III','IV','V'][semId-1]}</div>
+                <div class="ms-info-row"><span>Semester:</span> SEMESTER - ${['I','II','III','IV','V','VI'][semId-1]}</div>
                 <div class="ms-info-row"><span>Gender:</span> Male</div>
             </div>
         </div>
@@ -687,7 +702,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const chartCanvas = document.getElementById('performanceChart');
     if (chartCanvas && typeof Chart !== 'undefined') {
         const sgpaValues = academicData.semesters.map(s => s.sgpa);
-        const cgpaValues = [7.76, 7.79, 8.13, 8.25, 8.38]; // Cumulative CGPA per sem
+        const cgpaValues = [7.76, 7.79, 8.13, 8.25, 8.38, 8.44]; // Cumulative CGPA per sem
         const labels = academicData.semesters.map(s => s.title);
 
         Chart.defaults.color = 'rgba(255,255,255,0.5)';
@@ -706,9 +721,11 @@ document.addEventListener('DOMContentLoaded', () => {
                             'rgba(129,140,248,0.75)',
                             'rgba(129,140,248,0.75)',
                             'rgba(129,140,248,0.75)',
+                            'rgba(129,140,248,0.75)',
                             'rgba(167,139,250,0.75)'
                         ],
                         borderColor: [
+                            'rgba(129,140,248,1)',
                             'rgba(129,140,248,1)',
                             'rgba(129,140,248,1)',
                             'rgba(129,140,248,1)',
