@@ -43,3 +43,8 @@ desktop.ini
 *.njsproj
 *.sln
 *.sw?
+
+# Database CRUD Admin Panel
+db-admin/node_modules/
+db-admin/.env
+
