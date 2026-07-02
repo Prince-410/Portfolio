@@ -2,6 +2,7 @@
 
 # Vercel
 .vercel
+.vercel/
 
 # Dependency directories
 node_modules/
