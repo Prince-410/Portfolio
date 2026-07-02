@@ -314,7 +314,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Send email quietly in the background using FormSubmit API
             const jsonBody = JSON.stringify(newMessage, null, 2);
             
-            fetch("https://formsubmit.co/ajax/pl74117411@gmail.com", {
+            fetch("https://formsubmit.co/ajax/princelakhani74@gmail.com", {
                 method: "POST",
                 headers: { 
                     'Content-Type': 'application/json',
