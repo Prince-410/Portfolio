@@ -44,6 +44,7 @@ A modern, high-performance, and fully interactive personal portfolio website sho
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
 ![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white)
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=flat-square&logo=tensorflow&logoColor=white)
 ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white)
@@ -61,7 +62,12 @@ Portfolio/
 ├── .git/                 # Git repository history
 ├── .vercel/              # Vercel deployment cache and configurations
 ├── assets/               # Media resources (images, resumes, icons)
+├── db-admin/             # Local CRUD Admin Panel (Express + Glassmorphism Web Panel)
+│   ├── public/           # Admin panel client-side assets
+│   ├── package.json      # Node.js backend dependencies
+│   └── server.js         # API Server handling DB CRUD endpoints
 ├── index.html            # Main markup and page layout
+├── portfolio_db.sql      # MySQL schema initialization and seed data script
 ├── script.js             # Core interaction, typewriter effects, particle rendering
 ├── style.css             # Vanilla CSS core design styles (layout, glassmorphism, keyframes)
 ├── vercel.json           # Vercel deployment and routing configs
@@ -104,6 +110,30 @@ To run and view this project locally, execute the following steps:
 
 3. **Open Browser**
    Access the local server page via the URL output by the server tool (usually `http://localhost:3000` or `http://127.0.0.1:5500`).
+
+---
+
+## 🗄️ Database & CRUD Control Panel Setup
+
+This project includes a relational MySQL database configuration and a local Web Admin Dashboard to easily run CRUD operations on all content.
+
+### 1. Import Schema to MySQL Workbench
+- Open **MySQL Workbench** and connect to your database instance.
+- Go to `File -> Open SQL Script...` and select `portfolio_db.sql`.
+- Press the **Execute** button (lightning bolt `⚡`) to create the `portfolio_db` schema and populate all seed data.
+
+### 2. Configure Environment Settings
+- Open `db-admin/.env` and update the `DB_PASSWORD` parameter with your local MySQL password:
+  ```env
+  DB_PASSWORD=your_mysql_password
+  ```
+
+### 3. Run the Admin Server
+- Open a terminal inside the `db-admin` folder and run:
+  ```bash
+  npm start
+  ```
+- Open your browser and navigate to **`http://localhost:5000`** to view and modify your portfolio database content.
 
 ---
 
